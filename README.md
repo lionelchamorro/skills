@@ -5,10 +5,40 @@ practice across our Python, FastAPI, Prefect, LLM/AI, ASR, and Next.js codebases
 Pocock's deep-module skills — not from generic defaults. They are written to be self-contained
 and usable by anybody.
 
-## Skills
+## Install
 
-- `collective-refactor` — refactor an existing codebase toward CollectiveAI style and architecture.
-- `collective-pr-review` — PR gate before creating, opening, updating, or marking a PR ready.
+Install with the [`skills`](https://skills.sh) CLI — it clones this repo and drops the skills
+into your agent (Claude Code, Codex, Cursor, …):
+
+```bash
+# add both skills to the current project
+npx skills@latest add collectiveai-team/skills
+
+# or pick one
+npx skills@latest add collectiveai-team/skills --skill collective-pr-review
+
+# preview what's in the repo without installing
+npx skills@latest add collectiveai-team/skills --list
+```
+
+Useful flags: `-g` install globally (user-level), `--copy` copy files instead of symlinking,
+`-a <agent>` target a specific agent (`claude-code`, `codex`, `cursor`, …), `--all` install
+everything non-interactively.
+
+Each skill installs self-contained — it carries its own `rules/` and compiled `AGENTS.md`, so
+no extra setup is needed.
+
+## Usage
+
+Once installed, the skills are invoked by your agent:
+
+- **`collective-refactor`** — adapt an existing codebase to our style and architecture. Trigger
+  it by asking the agent to "refactor toward CollectiveAI style", modernize a project, or clean
+  up architecture.
+- **`collective-pr-review`** — a PR gate. Runs before the agent creates, updates, or marks a PR
+  ready: applies the shared rules plus deep-module and large-file/spaghetti checks.
+
+Both read `rules/_sections.md` (the index) and open the specific `rules/<id>.md` they need.
 
 ## How rules are structured
 
@@ -38,10 +68,10 @@ into each skill so every skill installs self-contained.
 ```
 
 Each rule carries frontmatter:
-- `applies-to` — `all`, or a comma list of repos/stacks (`nextjs`, `prefect`, `qxo`, …). This is
-  how the pack avoids imposing one repo's config on every repo.
-- `status` — `current` (what repos do today), `direction` (target for new code), or `legacy`
-  (preserve, don't expand).
+- `applies-to` — `all`, or a comma list of stack tags (`python`, `fastapi`, `prefect`, `asr`,
+  `llm`, `nextjs`, `k8s`, `edge`). This scopes a rule so stack-specific guidance only fires where
+  it belongs.
+- `status` — `current` (the standard) or `direction` (where existing code should head).
 - `scope`, `section`, `title`, `tags`.
 
 A skill references rules by reading `rules/_sections.md` (the index), then opening the specific
@@ -59,10 +89,5 @@ document for whole-ruleset reads.
 
    It fails loudly if a declared rule has no file, or a rule file isn't declared in
    `_sections.md`. The generated `skills/*/rules/` and `skills/*/AGENTS.md` are committed so the
-   skills install self-contained — always re-run the build after editing `rules/`.
-
-## Install
-
-The included plugin manifests (`.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`) expose
-both skills. For direct local use, copy the skill directories into the agent skills directory —
-each one already carries its own `rules/` and `AGENTS.md`.
+   skills install self-contained — always re-run the build (and commit the result) after editing
+   `rules/`.

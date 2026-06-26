@@ -1,7 +1,7 @@
-# CollectiveAI Skills
+# Engineering Skills
 
-Agent skills encoding our engineering standards. The rules are derived from real production
-practice across our Python, FastAPI, Prefect, LLM/AI, ASR, and Next.js codebases, plus Matt
+Agent skills encoding a house engineering standard. The rules are derived from real production
+practice across Python, FastAPI, Prefect, LLM/AI, ASR, and Next.js codebases, plus Matt
 Pocock's deep-module skills — not from generic defaults. They are written to be self-contained
 and usable by anybody.
 
@@ -12,13 +12,13 @@ into your agent (Claude Code, Codex, Cursor, …):
 
 ```bash
 # add both skills to the current project
-npx skills@latest add collectiveai-team/skills
+npx skills@latest add lionelchamorro/skills
 
 # or pick one
-npx skills@latest add collectiveai-team/skills --skill collective-pr-review
+npx skills@latest add lionelchamorro/skills --skill engineering-pr-review
 
 # preview what's in the repo without installing
-npx skills@latest add collectiveai-team/skills --list
+npx skills@latest add lionelchamorro/skills --list
 ```
 
 Useful flags: `-g` install globally (user-level), `--copy` copy files instead of symlinking,
@@ -32,10 +32,10 @@ no extra setup is needed.
 
 Once installed, the skills are invoked by your agent:
 
-- **`collective-refactor`** — adapt an existing codebase to our style and architecture. Trigger
-  it by asking the agent to "refactor toward CollectiveAI style", modernize a project, or clean
-  up architecture.
-- **`collective-pr-review`** — a PR gate. Runs before the agent creates, updates, or marks a PR
+- **`engineering-refactor`** — adapt an existing codebase to the house style and architecture.
+  Trigger it by asking the agent to "refactor toward the house style", modernize a project, or
+  clean up architecture.
+- **`engineering-pr-review`** — a PR gate. Runs before the agent creates, updates, or marks a PR
   ready: applies the shared rules plus deep-module and large-file/spaghetti checks.
 
 Both read `rules/_sections.md` (the index) and open the specific `rules/<id>.md` they need.
@@ -57,11 +57,11 @@ into each skill so every skill installs self-contained.
 ├── scripts/
 │   └── build_skills.py          # compiles rules/ into each skill bundle + AGENTS.md
 └── skills/engineering/
-    ├── collective-refactor/
+    ├── engineering-refactor/
     │   ├── SKILL.md             # workflow + index pointing at rules/<id>.md
     │   ├── rules/               # GENERATED bundle (do not edit)
     │   └── AGENTS.md            # GENERATED compiled ruleset (do not edit)
-    └── collective-pr-review/
+    └── engineering-pr-review/
         ├── SKILL.md
         ├── rules/               # GENERATED bundle
         └── AGENTS.md            # GENERATED

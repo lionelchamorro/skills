@@ -1,9 +1,9 @@
 ---
-name: collective-pr-review
-description: CollectiveAI PR gate that applies the shared rules plus deep-module and large-file/spaghetti checks before creating, opening, updating, or marking a pull request ready. Use when an agent is about to create a PR, update a PR, publish a branch, request review, or summarize PR readiness.
+name: engineering-pr-review
+description: PR gate that applies the shared rules plus deep-module and large-file/spaghetti checks before creating, opening, updating, or marking a pull request ready. Use when an agent is about to create a PR, update a PR, publish a branch, request review, or summarize PR readiness.
 ---
 
-# Collective PR Review
+# Engineering PR Review
 
 Run this before creating, opening, updating, or marking a PR ready. The rules are bundled as
 atomic files under `rules/`; the PR-specific gate lives in `rules/pr-*.md`.
@@ -49,7 +49,7 @@ Apply `rules/arch-deletion-test.md`, `rules/arch-adapter-discipline.md`,
 ### 3. Spaghetti & large-file check
 
 Per `rules/spaghetti-*.md`:
-- List touched files over 400 lines (large) and over 700 lines (enormous) — these thresholds are a CollectiveAI heuristic, not Matt Pocock; use them to *trigger* judgement, then apply the deletion test.
+- List touched files over 400 lines (large) and over 700 lines (enormous) — these thresholds are a house heuristic, not Matt Pocock; use them to *trigger* judgement, then apply the deletion test.
 - For each large touched file, decide whether the PR makes it smaller, keeps the change narrowly localized, or piles on unrelated responsibility.
 - Reject changes that add branches to mixed orchestration without improving the seam (`rules/spaghetti-mixed-orchestration.md`).
 - Watch for duplicated conditionals across callers, boolean-flag proliferation, catch-all `utils.py` (`rules/spaghetti-no-utils-dumping.md`), and over-long functions (`rules/spaghetti-function-size.md`).
@@ -66,7 +66,7 @@ was not run.
 Before publishing, produce a short readiness summary:
 
 ```md
-CollectiveAI PR gate:
+Engineering PR gate:
 - Shared rules: pass/fail with notes (cite rule ids)
 - Deep-module check: pass/fail with notes
 - Large-file/spaghetti check: pass/fail with touched large files

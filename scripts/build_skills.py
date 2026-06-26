@@ -20,8 +20,8 @@ REPO = Path(__file__).resolve().parent.parent
 RULES_DIR = REPO / "rules"
 SECTIONS = RULES_DIR / "_sections.md"
 SKILLS = [
-    REPO / "skills" / "engineering" / "collective-refactor",
-    REPO / "skills" / "engineering" / "collective-pr-review",
+    REPO / "skills" / "engineering" / "engineering-refactor",
+    REPO / "skills" / "engineering" / "engineering-pr-review",
 ]
 
 FRONTMATTER = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)

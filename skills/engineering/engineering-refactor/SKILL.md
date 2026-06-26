@@ -1,9 +1,9 @@
 ---
-name: collective-refactor
-description: Refactor a codebase toward CollectiveAI engineering style, project shape, tests, and deep-module architecture. Use when the user asks to adapt a repo to CollectiveAI styles or practices, clean up architecture, modernize a Python project, or refactor existing code for maintainability.
+name: engineering-refactor
+description: Refactor a codebase toward the house engineering style, project shape, tests, and deep-module architecture. Use when the user asks to adapt a repo to these styles or practices, clean up architecture, modernize a Python project, or refactor existing code for maintainability.
 ---
 
-# Collective Refactor
+# Engineering Refactor
 
 Move an existing codebase toward the house engineering standard **without bulldozing local
 project contracts**. The rules in `rules/` cover the Python toolchain, package layout,
@@ -17,7 +17,7 @@ first** — it is the index of every rule, grouped by section, with each rule's 
 the specific `rules/<id>.md` files relevant to what you are touching. `AGENTS.md` is the same
 rules compiled into one document if you want to skim everything at once.
 
-Every rule has an `applies-to` field (e.g. `all`, `nextjs`, `prefect`, `qxo`) and a `status`:
+Every rule has an `applies-to` field (e.g. `all`, `nextjs`, `prefect`, `asr`) and a `status`:
 - `current` — what the repos do today.
 - `direction` — where new/modernized code should head.
 - `legacy` — preserve in repos that use it; don't expand or fight it.

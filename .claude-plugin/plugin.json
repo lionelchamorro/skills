@@ -1,7 +1,7 @@
 {
-  "name": "collectiveai-skills",
+  "name": "engineering-skills",
   "skills": [
-    "./skills/engineering/collective-refactor",
-    "./skills/engineering/collective-pr-review"
+    "./skills/engineering/engineering-refactor",
+    "./skills/engineering/engineering-pr-review"
   ]
 }
